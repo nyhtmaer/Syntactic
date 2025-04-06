@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Python Code Transformation Tool</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/theme/monokai.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Python Code Transformation Dashboard</h1>
+        <p class="subtitle">Analytics and statistics for code transformations</p>
+        <nav class="main-nav">
+            <a href="/" class="nav-link">Code Transformer</a>
+            <a href="/dashboard" class="nav-link active">Dashboard</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="dashboard-grid">
+                <!-- Summary Card -->
+                <div class="dashboard-card summary-card">
+                    <h2>Transformation Summary</h2>
+                    <div class="stat-grid">
+                        <div class="stat-item">
+                            <span class="stat-value">124</span>
+                            <span class="stat-label">Total Transformations</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">78</span>
+                            <span class="stat-label">Sugarized</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">46</span>
+                            <span class="stat-label">Desugarized</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">92%</span>
+                            <span class="stat-label">Success Rate</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Common Transformations Card -->
+                <div class="dashboard-card">
+                    <h2>Most Common Transformations</h2>
+                    <div class="chart-container">
+                        <div class="bar-chart">
+                            <div class="bar-item">
+                                <div class="bar-label">List Comprehension</div>
+                                <div class="bar-track">
+                                    <div class="bar-fill" style="width: 85%"></div>
+                                </div>
+                                <div class="bar-value">85%</div>
+                            </div>
+                            <div class="bar-item">
+                                <div class="bar-label">Ternary Operator</div>
+                                <div class="bar-track">
+                                    <div class="bar-fill" style="width: 62%"></div>
+                                </div>
+                                <div class="bar-value">62%</div>
+                            </div>
+                            <div class="bar-item">
+                                <div class="bar-label">Enumerate Pattern</div>
+                                <div class="bar-track">
+                                    <div class="bar-fill" style="width: 48%"></div>
+                                </div>
+                                <div class="bar-value">48%</div>
+                            </div>
+                            <div class="bar-item">
+                                <div class="bar-label">Dict Comprehension</div>
+                                <div class="bar-track">
+                                    <div class="bar-fill" style="width: 36%"></div>
+                                </div>
+                                <div class="bar-value">36%</div>
+                            </div>
+                            <div class="bar-item">
+                                <div class="bar-label">With Statement</div>
+                                <div class="bar-track">
+                                    <div class="bar-fill" style="width: 29%"></div>
+                                </div>
+                                <div class="bar-value">29%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity Card -->
+                <div class="dashboard-card activity-card">
+                    <h2>Recent Activity</h2>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon sugar"></div>
+                            <div class="activity-content">
+                                <div class="activity-title">List Comprehension Transformation</div>
+                                <div class="activity-time">5 minutes ago</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon desugar"></div>
+                            <div class="activity-content">
+                                <div class="activity-title">Ternary Operator Expansion</div>
+                                <div class="activity-time">12 minutes ago</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon sugar"></div>
+                            <div class="activity-content">
+                                <div class="activity-title">Enumerate Pattern Transformation</div>
+                                <div class="activity-time">28 minutes ago</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon desugar"></div>
+                            <div class="activity-content">
+                                <div class="activity-title">Dictionary Comprehension Expansion</div>
+                                <div class="activity-time">34 minutes ago</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon sugar"></div>
+                            <div class="activity-content">
+                                <div class="activity-title">Set Comprehension Transformation</div>
+                                <div class="activity-time">45 minutes ago</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Performance Card -->
+                <div class="dashboard-card">
+                    <h2>Transformation Performance</h2>
+                    <div class="metrics-container">
+                        <div class="metric-item">
+                            <div class="metric-circle">
+                                <svg viewBox="0 0 36 36">
+                                    <path class="circle-bg" d="M18 2.0845
+                                        a 15.9155 15.9155 0 0 1 0 31.831
+                                        a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    <path class="circle-fill" stroke-dasharray="85, 100" d="M18 2.0845
+                                        a 15.9155 15.9155 0 0 1 0 31.831
+                                        a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    <text x="18" y="20.35" class="metric-text">85%</text>
+                                </svg>
+                            </div>
+                            <div class="metric-label">Avg. Reduction</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-circle">
+                                <svg viewBox="0 0 36 36">
+                                    <path class="circle-bg" d="M18 2.0845
+                                        a 15.9155 15.9155 0 0 1 0 31.831
+                                        a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    <path class="circle-fill" stroke-dasharray="92, 100" d="M18 2.0845
+                                        a 15.9155 15.9155 0 0 1 0 31.831
+                                        a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    <text x="18" y="20.35" class="metric-text">92%</text>
+                                </svg>
+                            </div>
+                            <div class="metric-label">Valid Output</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Powered by CrewAI and Claude | AST-based Python Transformation</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html> 

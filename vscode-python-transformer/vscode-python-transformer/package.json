@@ -1,0 +1,76 @@
+{
+  "name": "vscode-python-transformer",
+  "displayName": "Python Code Transformer",
+  "description": "Transform Python code between concise and verbose forms",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Formatters"
+  ],
+  "activationEvents": [
+    "onLanguage:python"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "python-transformer.sugarize",
+        "title": "Python: Sugarize Code (Make Concise)"
+      },
+      {
+        "command": "python-transformer.desugarize",
+        "title": "Python: Desugarize Code (Expand & Add Comments)"
+      },
+      {
+        "command": "python-transformer.startServer",
+        "title": "Python: Start Transformation Server"
+      },
+      {
+        "command": "python-transformer.stopServer",
+        "title": "Python: Stop Transformation Server"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "when": "editorLangId == python",
+          "command": "python-transformer.sugarize",
+          "group": "1_modification"
+        },
+        {
+          "when": "editorLangId == python",
+          "command": "python-transformer.desugarize",
+          "group": "1_modification"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "python-transformer.startServer"
+        },
+        {
+          "command": "python-transformer.stopServer"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile && npm run copy-backend",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js",
+    "copy-backend": "node copy-backend.js"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.7",
+    "@types/vscode": "^1.60.0",
+    "typescript": "^4.4.4"
+  },
+  "dependencies": {
+    "axios": "^0.24.0"
+  }
+} 

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Code Transformation Tool</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/theme/monokai.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Python Code Transformation Tool</h1>
+        <p class="subtitle">Transform Python code between concise and verbose forms</p>
+        <nav class="main-nav">
+            <a href="/" class="nav-link active">Code Transformer</a>
+            <a href="/dashboard" class="nav-link">Dashboard</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="code-container">
+                <div class="code-panel">
+                    <h2>Original Code</h2>
+                    <div class="editor-container">
+                        <textarea id="original-code" placeholder="Paste your Python code here..."></textarea>
+                    </div>
+                    <div class="operation-controls">
+                        <div class="operation-type">
+                            <label>
+                                <input type="radio" name="operation" value="sugarize" checked>
+                                Sugarize (Make Concise)
+                            </label>
+                            <label>
+                                <input type="radio" name="operation" value="desugarize">
+                                Desugarize (Expand & Add Comments)
+                            </label>
+                        </div>
+                        <button id="process-btn" class="btn primary">Transform Code</button>
+                    </div>
+                </div>
+
+                <div class="code-panel">
+                    <h2 id="result-title">Transformed Code</h2>
+                    <div class="editor-container">
+                        <textarea id="transformed-code" readonly></textarea>
+                    </div>
+                    <div id="validation-status"></div>
+                </div>
+            </div>
+
+            <div id="explanations-panel" class="explanations">
+                <h2>Transformations Explained</h2>
+                <div id="explanations-content"></div>
+            </div>
+
+            <div id="diff-panel" class="diff-panel">
+                <h2>Diff View</h2>
+                <div id="diff-content"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Powered by CrewAI and Claude | AST-based Python Transformation</p>
+    </footer>
+
+    <!-- Loading indicator -->
+    <div id="loading" class="loading-overlay">
+        <div class="spinner"></div>
+        <p>Analyzing your code...</p>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/addon/edit/matchbrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/diff2html/3.4.17/diff2html.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html> 
